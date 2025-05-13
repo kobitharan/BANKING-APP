@@ -573,8 +573,6 @@ while True:
                         password_change(account_num)
                         break
              
-                except ValueError:
-                     print("enter your correct account number .. ")
             
             elif choice ==8:
 
