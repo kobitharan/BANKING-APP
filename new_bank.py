@@ -20,6 +20,7 @@ def emloyee_MENU():
             print("8. Account ditals ") 
             print("9. Log out")
             print("0. Exit")
+            print("\n================================\n")
             choice=int(input("inter your choice(1-9) :  "))
             if  0<= choice <10:
                 return choice
@@ -46,6 +47,7 @@ def  customer_MENU():
             print("6. Account ditals ") 
             print("7. log out ")
             print("0. Exit")
+            print("\n==============================\n")
             choice=int(input("inter your choice(1-7) : "))
             if  0<= choice <8:
                     return choice
@@ -141,7 +143,7 @@ def withraw_deposit_lines(account_number):
                 #     #         file.write(f"{account_num},{balance_amount},{id_number},\n")
             
     if balance_amount==-1:
-         print("checked account nomber... ")
+         print("checked account nomber...\n ")
          
     else:
         with open("customer_mony.txt","a") as file:
@@ -164,7 +166,7 @@ def check_amount():#heck_amount(return amount)
                  break
 
         except ValueError: 
-            print("invalid amount ... enter correct amount please")
+            print("invalid amount ... enter correct amount please\n")
 #===================================================================end=======================================
 #-------------------------------------------------------star-------------------
 def input_ditals():
@@ -234,7 +236,8 @@ def account_ditals(account_num1):
                 print(f"customer age     : {line[5]}")
                 print(f"costmer address  : {line[4]}")
                 print(f"mobile number    : {line[6]}")        
-#============================================================
+#==========================================================================
+#===========================================================================
 def check_balance(account_num1):
     
      with open ("customer_mony.txt") as file:      #costomer_acount number,balance_mony       
@@ -245,7 +248,7 @@ def check_balance(account_num1):
             if (line[0]) == account_num1:
                  #return line[1]
                  print(f"your balance is : {line[1]}")
-
+#===========================================================================
 ###password-------sari ---checked------------------------------------------creattttteeee-------
 def password_creat():
     while True:
@@ -284,9 +287,8 @@ def password_creat():
         else:
             print("password create success")       
             return password
-                
-
-# print("-------------wellcom to bank------------ ")   
+#===========================================================================
+#===========================================================================                
 #-------------------------------------------creat file ________________------------
 def creat_files ():
         
@@ -310,7 +312,9 @@ def creat_files ():
                      file.write(f"login_no ,  costomer/Employee  , Name  ,  NIC , address , age , mobile num \n")       
 #========================================================================================
  #----------------------check 1 st login -------------
-def password_change(account_num):    
+
+def password_change(account_num):   
+         
         with open("account_numbers_and_password.txt", 'r') as file:
             lines = file.readlines()
 
@@ -331,11 +335,10 @@ def password_change(account_num):
             with open("account_numbers_and_password.txt","a") as file:            
                 file.write(f"{account_num},{password},{"E"},\n")
         else:
-           print ("Enter your correct account number . ")          
-              
+           print ("Enter your correct account number . ")               
  #----------------------------------------------------------------------------------------------------------
-
 while True :
+
     with open("account_numbers_and_password.txt","a") as file:
          print("---------------wellcome------------------")
     with open("account_numbers_and_password.txt","r") as file:
@@ -363,6 +366,7 @@ while True :
             break
 #==================================================
 #-----------------------------------------------------------
+
 def login_check():
     
     while True:
@@ -380,10 +384,7 @@ def login_check():
                     
                     if (line[1])==password:# login emloye------------
                         print("-------login success account-------")
-                        #print("-------bank employe-------")
-                        
-                        
-                        #         print("---------------thank you for using--------------")
+            
                         nums = (line[2])
                         return nums,id_number
                              
@@ -401,17 +402,17 @@ def login_check():
 
             else:
                 print("Invalid user / password...\n\tEnter Correct username and password. \n")       
-                
-
-                        
-
 #=======================================================================================================   
+
 def customer_ditals_menu():
+        
         try: 
                 while True:
 
                     print("1. customer ditals ") 
                     print("2. chenge ditals ") 
+                    print("3.  main menu ") 
+
                 
                     choice=int(input("inter your choice(1-2) :  "))
                     
@@ -419,15 +420,17 @@ def customer_ditals_menu():
                     if 0< choice <3:
 
                         return choice
+                    elif choice==3:
+                         break
                     else:
                         print("   enter your correct choice please ....")
+
         except ValueError: 
                 print("invalid number ... enter correct number please...")
         except TypeError: 
             print("invalid number ... enter correct number please...")
 #___________________________________
-   
-   #==================================
+#=============================================================================================================
     
 while True:
     check=login_check()
@@ -466,13 +469,12 @@ while True:
                 print("NEW Employee login password : ",password)
 
 
-            elif choice==2:                                               # print("2. create customer") 
+            elif choice==2:      #  create customer") 
                                             
                     #creat a costomer-------------------
                 c_ditals=input_ditals()     #name,nic,address,age
                 c_password=password_creat()
                 c_account_num=costomer_account_number_creat()
-                # c_primary_key=primary_key_creat()
                 
                 c_name=c_ditals[0]
                 c_nic=c_ditals[1]
@@ -501,57 +503,50 @@ while True:
                                                                             #costomer_acount number,balance_mony       
 
 
-            elif choice==3:    # print("3. Transaction history ") 
-                try: 
-                    account_num=(input("enter costomer Account number : "))
-                    while True:
-                       
-                        Transaction_history(account_num)
-                        break
-
-                # except ValueError:
-                #     print("enter your correct account number .. ") 
-                except   TypeError:
-                       print("enter your correct account number .. ") 
-
-            elif choice==4:   #print("4.  E Check Balance")
-                try: 
-                    account_num1=(input("enter costomer Account number : ")) 
-                    while True: 
-                        check_balance(account_num1)
+            elif choice==3:    # print Transaction history 
+                    try: 
+                        account_num=(input("enter costomer Account number : "))
+                        while True:
                         
-                        break
-                except ValueError:
-                    print("enter your correct account number .. ")
-                    
+                            Transaction_history(account_num)
+                            break
+
+                    except   TypeError:
+                        print("enter your correct account number .. ") 
+
+            elif choice==4:   #print(  ---------- Check Balance-------  )
+                    try: 
+                        account_num1=(input("enter costomer Account number : ")) 
+                        while True: 
+                            check_balance(account_num1)
+                            
+                            break
+                    except ValueError:
+                        print("enter your correct account number .. ")
+                        
                             
 
-            elif 4<choice<7: #Withdraw Money") 
-                try: 
-                    
-                    while True: 
-                        account_num1=(input("enter costomer Account number : ")) 
-                        amount=check_amount()
-                        amount=withraw_deposit_lines(account_num1)
-                        break
-                except ValueError:
-                    print("enter your correct account number .. ")
+            elif 4<choice<7: #------Withdraw Money") 
+                    try: 
+                        
+                        while True: 
+                            account_num1=(input("enter costomer Account number : ")) 
+                            amount=check_amount()
+                            amount=withraw_deposit_lines(account_num1)
+                            break
+                    except ValueError:
+                        print("enter your correct account number .. ")
                         
 
-            elif choice==7: #cheng password"
+            elif choice==7: #-----------chenge password"
                 # try: 
-                    account_num=(input("enter costomer Account number : ") )
-                    while True: 
-                        password_change(account_num)
-                        break
+                        account_num=(input("enter costomer Account number : ") )
+                        while True: 
+                            password_change(account_num)
+                            break
              
-                # except ValueError:
-                #      print("enter your correct account number .. ")
             
-            elif choice ==8:
-
-
-
+            elif choice ==8:#---------------Account ditals 
 
                 try: 
                     account_num=(input("Ditals chenge  Account number or employee number : ") )
@@ -581,7 +576,7 @@ while True:
                                     elif account_num==((s_line[0])):     
                                         print ("success full  .")
                             
-                            if num ==6:
+                            #if num ==6:
                                 with open("customer_ditals.txt","a") as file:
                                     file.write(f"{account_num},C,{name} , {nic} , {address} , {age} ,{mobile},\n")
                         if num==8:        
@@ -605,52 +600,45 @@ while True:
                      print("enter your correct account number .. ")
                  
                 
-                 
-                     
-
-            elif choice==9: #log out
+            elif choice==9: #-------------log out
                 print(F"{'-'*50}\n----THANK YOU FOR USING SYSTEM-----\n{'-'*50}")
                 break
                 
-            elif choice ==0 :# (Exit)
+            elif choice ==0 :# -------------(Exit)
                  exit()
 
             
         elif "C" == check_C_E:                           
                                                                 
-            choice=customer_MENU()
-            if choice ==1: #   print("1. Check Balance")
+                choice=customer_MENU()
+                if choice ==1:                    # -------   Check Balance")
+                        
+                        print(check_balance(account_num))
+                
+                elif 1<choice<4:     #  --------------------- Withdraw Money")
+
+                    amount=check_amount()
+                    withraw_deposit_lines(account_num)
+            
+                elif choice==4:   #================================= chenge password")
+                
+                    password_change(account_num)
+
+                
                     
-                    print(check_balance(account_num))
-             
-            elif 1<choice<4:     #  print("2. Withdraw Money")
-
-                amount=check_amount()
-                withraw_deposit_lines(account_num)
-         
-            elif choice==4:    # print("5. Transaction history ") 
-            
-                 password_change(account_num)
-
-              #print("4. chenge password")
+                elif choice == 5:   # ---------------------==== Transaction history ") 
+                    Transaction_history(account_num)
+                    
+                elif choice==6:     # ========================Account ditals
+                    account_ditals(account_num)
+                    
                 
-            elif choice == 5:
-                 Transaction_history(account_num)
-                 
-            elif choice==6:  
-                 account_ditals(account_num)
-                #account_ditals(account_num)
-                #6
-                # Transaction_mony(account_num)
-                # print(account_num)
-                
-            
-            elif choice==7:   #  print("6. log out")
-                 #Transaction_mony(account_num)
-                print(F"{'-'*50}\n----THANK YOU FOR USING SYSTEM-----\n{'-'*50}")
-                break
-            elif choice ==0 :# (Exit)
-                 exit()
+                elif choice==7:   # ==================================log out")
+                   
+                    print(F"{'-'*50}\n----THANK YOU FOR USING SYSTEM-----\n{'-'*50}\n")
+                    break
+                elif choice ==0 :# ================================(Exit)
+                    exit()
 
         else:
             
