@@ -5,54 +5,57 @@ import os
 import random
 import datetime
 def emloyee_MENU():
-    try: 
-        while True:
+    while True:     
+        try: 
+        
 
-            print("\n=============Main menu===================\n")
-            print("\n========HI Bank employeee ...  ===========\n")
+                print("\n=============Main menu===================\n")
+                print("\n========HI Bank employeee ...  ===========\n")
 
-            print("1. create employee ") 
-            print("2. create customer") 
-            print("3. Transaction history ") 
-            print("4. Check Balance") 
-            print("5. Withdraw Money") 
-            print("6. Deposit Money") 
-            print("7. chenge password") 
-            print("8. Account ditals ") 
-            print("9. Exit")
-            choice=int(input("inter your choice(1-7) :  "))
-            if  0< choice <10:
-                return choice
-            else:
-                print("   enter your correct choice please ....")
-    except ValueError: 
+                print("1. create employee ") 
+                print("2. create customer") 
+                print("3. Transaction history ") 
+                print("4. Check Balance") 
+                print("5. Withdraw Money") 
+                print("6. Deposit Money") 
+                print("7. chenge password") 
+                print("8. Account ditals ") 
+                print("9. Exit")
+                choice=int(input("inter your choice(1-9) :  "))
+                if  0< choice <10:
+                    return choice
+                else:
+                    print("   enter your correct choice please ....")
+        except ValueError: 
+                print("invalid number ... enter correct number please...")
+        except TypeError: 
             print("invalid number ... enter correct number please...")
-    except TypeError: 
-         print("invalid number ... enter correct number please...")
 #---------------using for emloyee----------------------
-
 
 #================================================================= withrow end =========================
 #------------------------------------------------------srat costomer menu----------
 def  customer_MENU():
-    try:
-         while True:
-                print("\n========main menu===========\n")
-                print("1. Check Balance") 
-                print("2. Withdraw Money") 
-                print("3. Deposit Money") 
-                print("4. chenge password") 
-                print("5. Account Transaction ditals")
-                print("6. Account ditals ") 
-                print("7. Exit")
-                choice=int(input("inter your choice(1-4) : "))
-                if  0< choice <8:
-                        return choice
-                else:
-                    print("   enter your choice please ....")
-                
-    except ValueError: 
-            print("invalid number ... enter correct number please")
+    while True:   
+        try:
+    
+            print("\n========main menu===========\n")
+            print("1. Check Balance") 
+            print("2. Withdraw Money") 
+            print("3. Deposit Money") 
+            print("4. chenge password") 
+            print("5. Account Transaction ditals")
+            print("6. Account ditals ") 
+            print("7. Exit")
+            choice=int(input("inter your choice(1-7) : "))
+            if  0< choice <8:
+                    return choice
+            else:
+                print("   enter your choice please ....")
+            
+        except ValueError: 
+                print("invalid number ... enter correct number please")
+        except TypeError:
+             print("invalid number ... enter correct number please")
 #Define Banking Functions------------------------------def start-------------------
 def deposit(balance1):
     while True:
@@ -168,17 +171,16 @@ def input_ditals():
     address=(input("Enter Address : "))
     
     while True:
-        age=int(input("Enter Age  : "))
-        if 0<= age <100 :
-            while True:
+        age=int(input("Enter Age 0-100 : "))
+        while 0<= age <100 :
+           
                 mobile=(input("Enter mobele number (0771234567): "))
                 mobile_num=len(mobile)
-                if mobile_num==10:
+                while mobile_num==10:
                     
-                    while True:
                         nic=input("enter NIC lenth 10-12  : ")
                         nic1=len(nic)
-                        if 9<nic1<13:
+                        while 9<nic1<13:
                             return[name,nic,address,age,mobile]
                 else:
                     print("enter correct mobile number : ")
@@ -521,6 +523,7 @@ while True:
                     file.write(f"{c_account_num},C,{c_name} , {c_nic} , {c_address} , {c_age} ,{mobile},\n")
                                                                     #"login_no,Password, C/E ,Name,NIC,address,age, creater_id\n")  
                 with open("customer_mony.txt","a") as file:
+                    print(f" success full deposit : {deposit_mony} ")
                     file.write(f"{c_account_num},{deposit_mony},\n")
                                                                             #costomer_acount number,balance_mony       
 
