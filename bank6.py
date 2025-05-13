@@ -7,24 +7,22 @@ import datetime
 def emloyee_MENU():
     while True:     
         try: 
-        
+            print("\n=============Main menu===================\n")
+            print("\n========HI Bank employeee ...  ===========\n")
 
-                print("\n=============Main menu===================\n")
-                print("\n========HI Bank employeee ...  ===========\n")
-
-                print("1. create employee ") 
-                print("2. create customer") 
-                print("3. Transaction history ") 
-                print("4. Check Balance") 
-                print("5. Withdraw Money") 
-                print("6. Deposit Money") 
-                print("7. chenge password") 
-                print("8. Account ditals ") 
-                print("9. Exit")
-                choice=int(input("inter your choice(1-9) :  "))
-                if  0< choice <10:
-                    return choice
-                else:
+            print("1. create employee ") 
+            print("2. create customer") 
+            print("3. Transaction history ") 
+            print("4. Check Balance") 
+            print("5. Withdraw Money") 
+            print("6. Deposit Money") 
+            print("7. chenge password") 
+            print("8. Account ditals ") 
+            print("9. Exit")
+            choice=int(input("inter your choice(1-9) :  "))
+            if  0< choice <10:
+                return choice
+            else:
                     print("   enter your correct choice please ....")
         except ValueError: 
                 print("invalid number ... enter correct number please...")
@@ -58,14 +56,13 @@ def  customer_MENU():
              print("invalid number ... enter correct number please")
 #Define Banking Functions------------------------------def start-------------------
 def deposit(balance1):
-    while True:
+    
         global account_num
         global amount
         try:
             now = datetime.datetime.now()
             #amount=check_amount()
-            count=0
-            count+1 
+           
             
             if amount:
                 balance=(int(balance1) + amount)
@@ -75,20 +72,20 @@ def deposit(balance1):
                     file.write(f"{account_num}, {balance},deposit,{now.date()},{now.time()},\n") 
                 return balance
         
-            elif count<4 :
-                print(f"\ninvalid amount $ {amount} ,enter your deposit amont greater than 0\n")
-            elif count== 4:
-                 print (" check ditals ")
-                 break
+            # elif count<4 :
+            #     print(f"\ninvalid amount $ {amount} ,enter your deposit amont greater than 0\n")
+            # elif count== 4:
+            #      print (" check ditals ")
+                 
         except ValueError: 
                 print("invalid number ... enter correct number please")
 #===================================================================end=========================================
 # Create a function withdraw using foe ----------------------------------------------
 
 def withdraw(balance2):
-    while True:
-
-        global account_number
+    
+        global amount
+        global account_num
         try: 
             now = datetime.datetime.now()
             #amount=check_amount()
@@ -103,12 +100,12 @@ def withdraw(balance2):
             
                 return balance
 
-            elif count<4 :
+            # elif count<4 :
                 
-                print(f"\ninvalid amount : {amount} ,enter your withdrow amont less than your  balance\n ")
-            elif count== 4:
-                 print (" check ditals ")
-                 break
+            #     print(f"\ninvalid amount : {amount} ,enter your withdrow amont less than your  balance\n ")
+            # elif count== 4:
+                #  print (" check ditals ")
+                 
         except ValueError: 
                 print("invalid number ... enter correct number please")
 #==================================================================end with===================================
@@ -127,6 +124,7 @@ def withraw_deposit_lines(account_number):
             elif account_number==(s_line[0]):
                 if choice==5 or 2 : #Withdraw Money") 
                     balance_amount=withdraw(int(s_line[1]))
+                    break
                     
                       
                 # if choice==2 : #Withdraw Money") 
@@ -134,6 +132,7 @@ def withraw_deposit_lines(account_number):
                       
                 elif choice==6 or 3 :
                     balance_amount=deposit(int(s_line[1]))
+                    break
                 # elif choice==:
                 #     balance_amount=deposit(int(s_line[1]))
                 #     #  with open("customer_mony.txt","a") as file:
@@ -174,7 +173,7 @@ def input_ditals():
         age=int(input("Enter Age 0-100 : "))
         while 0<= age <100 :
            
-                mobile=(input("Enter mobele number (0771234567): "))
+                mobile=(input("Enter mobile number (0771234567): "))
                 mobile_num=len(mobile)
                 while mobile_num==10:
                     
@@ -182,6 +181,8 @@ def input_ditals():
                         nic1=len(nic)
                         while 9<nic1<13:
                             return[name,nic,address,age,mobile]
+                        else:
+                            print("enter correct NIC number : ")
                 else:
                     print("enter correct mobile number : ")
         else:
